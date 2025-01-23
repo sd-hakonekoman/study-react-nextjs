@@ -1,45 +1,47 @@
 import Image from "next/image";
+import { getMembersList } from "../_libs/microcms";
 import styles from "./page.module.css";
 
-const data = {
-  contents: [
-    {
-      id: `1`,
-      image: {
-        url: `/img-member1.jpg`,
-        width: 240,
-        height: 240,
-      },
-      name: `デビ`,
-      position: `CEO`,
-      profile: `グローバルウンタラカンタラ`,
-    },
-    {
-      id: `2`,
-      image: {
-        url: `/img-member2.jpg`,
-        width: 240,
-        height: 240,
-      },
-      name: `えみ`,
-      position: `COO`,
-      profile: `グローバル企業ウンタラカンタラ`,
-    },
-    {
-      id: `3`,
-      image: {
-        url: `/img-member3.jpg`,
-        width: 240,
-        height: 240,
-      },
-      name: `ジョン`,
-      position: `CTO`,
-      profile: `技術ウンタラカンタラ`,
-    },
-  ],
-};
+// const data = {
+//   contents: [
+//     {
+//       id: `1`,
+//       image: {
+//         url: `/img-member1.jpg`,
+//         width: 240,
+//         height: 240,
+//       },
+//       name: `デビ`,
+//       position: `CEO`,
+//       profile: `グローバルウンタラカンタラ`,
+//     },
+//     {
+//       id: `2`,
+//       image: {
+//         url: `/img-member2.jpg`,
+//         width: 240,
+//         height: 240,
+//       },
+//       name: `えみ`,
+//       position: `COO`,
+//       profile: `グローバル企業ウンタラカンタラ`,
+//     },
+//     {
+//       id: `3`,
+//       image: {
+//         url: `/img-member3.jpg`,
+//         width: 240,
+//         height: 240,
+//       },
+//       name: `ジョン`,
+//       position: `CTO`,
+//       profile: `技術ウンタラカンタラ`,
+//     },
+//   ],
+// };
 
-export default function Page() {
+export default async function Page() {
+  const data = await getMembersList();
   return (
     <div className={styles.container}>
       {data.contents.length === 0 ? (
