@@ -61,7 +61,9 @@ export default async function Page() {
               />
               <dl>
                 <dt className={styles.name}>{member.name}</dt>
-                <dd className={styles.position}>{member.position}</dd>
+                <dd className={styles.position}>
+                  {member.position ?? "役職なし"}
+                </dd>
                 <dd className={styles.profile}>{member.profile}</dd>
               </dl>
             </li>
